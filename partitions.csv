@@ -1,0 +1,7 @@
+# ESP32 RNG Analysis — custom partition table
+# Gives 2 MB to the factory app (WiFi + BT together need ~1.25 MB)
+# Name,   Type, SubType, Offset,   Size,    Flags
+nvs,      data, nvs,     0x9000,   0x5000,
+otadata,  data, ota,     0xe000,   0x2000,
+factory,  app,  factory, 0x10000,  0x1F0000,
+nvs_key,  data, nvs_keys,0x200000, 0x1000,

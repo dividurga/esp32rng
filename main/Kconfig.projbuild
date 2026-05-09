@@ -1,0 +1,30 @@
+menu "RNG Analysis Configuration"
+
+    config RNG_ENTROPY_MODE
+        int "Entropy source mode (0–7)"
+        default 0
+        range 0 7
+        help
+            Selects which hardware entropy sources are initialised before
+            collecting samples.
+
+            0  BARE        - No entropy sources (RC oscillator only)
+            1  WIFI        - WiFi RF subsystem (not connected)
+            2  BT          - Bluetooth RF subsystem (BLE mode)
+            3  WIFI_BT     - WiFi + Bluetooth RF
+            4  ADC         - SAR ADC entropy path (bootloader_random_enable)
+            5  ADC_WIFI    - SAR ADC + WiFi RF
+            6  ADC_BT      - SAR ADC + Bluetooth RF
+            7  ADC_WIFI_BT - All sources active (strongest)
+
+    config RNG_NUM_SAMPLES
+        int "Number of 32-bit samples to collect"
+        default 250000
+        range 1000 50000000
+        help
+            Total number of esp_random() calls per run.
+            250 000 samples = 1 000 000 bytes = 8 000 000 bits.
+            NIST SP 800-22 tests 7-15 need ≥1 Mbit.
+            PractRand is meaningful from ~1 MB (250 000 samples) upward.
+
+endmenu

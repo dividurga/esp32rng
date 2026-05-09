@@ -1,0 +1,2 @@
+# Mode 4: ADC — ADC noise only
+CONFIG_RNG_ENTROPY_MODE=4
