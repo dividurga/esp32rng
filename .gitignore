@@ -17,6 +17,9 @@ PractRand/*.a
 PractRand/RNG_test
 PractRand/VisualC_net/
 
+# ── Report ─────────────────────────────────────────────────────────────────────
+report/
+
 # ── macOS ──────────────────────────────────────────────────────────────────────
 .DS_Store
 .AppleDouble
