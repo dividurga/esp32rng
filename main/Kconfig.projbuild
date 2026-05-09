@@ -19,12 +19,12 @@ menu "RNG Analysis Configuration"
 
     config RNG_NUM_SAMPLES
         int "Number of 32-bit samples to collect"
-        default 250000
+        default 1048576
         range 1000 50000000
         help
             Total number of esp_random() calls per run.
-            250 000 samples = 1 000 000 bytes = 8 000 000 bits.
-            NIST SP 800-22 tests 7-15 need ≥1 Mbit.
-            PractRand is meaningful from ~1 MB (250 000 samples) upward.
+            1 048 576 samples = 4 194 304 bytes = 33 554 432 bits (4 MB).
+            NIST SP 800-22 tests 7-15 need ≥1 Mbit; 4 MB gives 33× headroom.
+            PractRand tests meaningfully up to ~2 MB with this dataset.
 
 endmenu

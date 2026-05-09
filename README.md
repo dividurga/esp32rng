@@ -149,11 +149,3 @@ pip install numpy scipy matplotlib pyserial
 (`nistrng` is no longer used.)
 
 ---
-
-## Key Design Decisions
-
-**Why always link WiFi + BT?** `CONFIG_ESP_WIFI_ENABLED` is set by ESP-IDF when the component is included — it cannot be set in `sdkconfig.defaults` to cause inclusion. Unconditional linking with runtime mode guards is the correct approach.
-
-**Why a custom partition table?** WiFi + BT together compile to ~1.25 MB, exceeding the default 1 MB factory slot. `partitions.csv` expands the factory partition to 1.94 MB.
-
-**Why binary `.bin` files?** 4 bytes/sample vs. 9 bytes as hex — 2.25× smaller. NumPy loads them in one call; PractRand `stdin32` reads them directly.
